@@ -8,7 +8,10 @@ def build_app():
     is_arm = platform.machine().lower().startswith(('arm', 'aarch'))
     
     # Get PyInstaller path
-    pyinstaller_path = os.path.join(os.path.dirname(sys.executable), 'pyinstaller')
+    if system == 'Windows':
+        pyinstaller_path = os.path.join(os.path.dirname(sys.executable), 'Scripts', 'pyinstaller.exe')
+    else:
+        pyinstaller_path = os.path.join(os.path.dirname(sys.executable), 'pyinstaller')
     
     # Base PyInstaller command
     base_command = [
